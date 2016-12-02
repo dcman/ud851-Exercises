@@ -67,14 +67,16 @@ public class MainActivity extends AppCompatActivity {
         new GithubQueryTask().execute(githubSearchUrl);
     }
 
-    private void showJsonDataView(){
+    private void showJsonDataView() {
         mErrorTextView.setVisibility(View.INVISIBLE);
         mSearchResultsTextView.setVisibility(View.VISIBLE);
     }
-    private void showErrorMessage(){
+
+    private void showErrorMessage() {
         mErrorTextView.setVisibility(View.VISIBLE);
         mSearchResultsTextView.setVisibility(View.INVISIBLE);
     }
+
     public class GithubQueryTask extends AsyncTask<URL, Void, String> {
 
 
