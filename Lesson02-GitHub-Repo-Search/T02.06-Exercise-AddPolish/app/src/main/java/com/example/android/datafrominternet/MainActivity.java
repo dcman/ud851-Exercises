@@ -22,6 +22,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.android.datafrominternet.utilities.NetworkUtils;
@@ -37,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView mSearchResultsTextView;
 
     private TextView mErrorTextView;
-    // TODO (24) Create a ProgressBar variable to store a reference to the ProgressBar
+    private ProgressBar mProgressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
         mSearchResultsTextView = (TextView) findViewById(R.id.tv_github_search_results_json);
 
         mErrorTextView = (TextView) findViewById(R.id.tv_error_message_display);
-        // TODO (25) Get a reference to the ProgressBar using findViewById
+        mProgressBar = (ProgressBar) findViewById(R.id.pb_loading_indicator);
     }
 
     /**
@@ -76,7 +77,12 @@ public class MainActivity extends AppCompatActivity {
     }
     public class GithubQueryTask extends AsyncTask<URL, Void, String> {
 
-        // TODO (26) Override onPreExecute to set the loading indicator to visible
+
+        @Override
+        protected void onPreExecute() {
+            mProgressBar.setVisibility(View.VISIBLE);
+            super.onPreExecute();
+        }
 
         @Override
         protected String doInBackground(URL... params) {
@@ -92,12 +98,12 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(String githubSearchResults) {
-            // TODO (27) As soon as the loading is complete, hide the loading indicator
+            mProgressBar.setVisibility(View.INVISIBLE);
             if (githubSearchResults != null && !githubSearchResults.equals("")) {
-                showJsonDataView();
+                showErrorMessage();
                 mSearchResultsTextView.setText(githubSearchResults);
             }
-            showErrorMessage();
+            showJsonDataView();
         }
     }
 
