@@ -19,6 +19,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -48,13 +49,12 @@ public class MainActivity extends AppCompatActivity {
      * @param v Button that was clicked.
      */
     public void onClickOpenAddressButton(View v) {
-        // TODO (5) Store an address in a String
+        String address = "1600 Pennsylvania Ave NW, Washington DC";
 
-        // TODO (6) Use Uri.parse with the appropriate scheme and query to form the Uri for the address
-
-        // TODO (7) Replace the Toast with a call to showMap, passing in the Uri from the previous step
-        Toast.makeText(this, "TODO: Open a map when this button is clicked", Toast.LENGTH_SHORT).show();
-    }
+        Uri uri = Uri.parse("geo:0,0?q=" + address);
+        Log.i("map", "onClickOpenAddressButton: " + uri);
+        showMap(uri);
+        }
 
     /**
      * This method is called when the Share Text Content button is clicked. It will simply share
