@@ -53,7 +53,6 @@ public class MainActivity extends AppCompatActivity {
              */
             @Override
             public void onClick(View v) {
-                mNameEntry = (EditText) v.findViewById(R.id.et_text_entry);
                 String message = String.valueOf(mNameEntry.getText());
                 /*
                  * Storing the Context in a variable in this case is redundant since we could have
