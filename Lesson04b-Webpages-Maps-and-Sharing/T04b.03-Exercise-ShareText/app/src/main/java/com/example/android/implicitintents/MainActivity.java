@@ -63,10 +63,8 @@ public class MainActivity extends AppCompatActivity {
      * @param v Button that was clicked.
      */
     public void onClickShareTextButton(View v) {
-        // TODO (5) Specify a String you'd like to share
-
-        // TODO (6) Replace the Toast with shareText, passing in the String from step 5
-        Toast.makeText(this, "TODO: Share text when this is clicked", Toast.LENGTH_LONG).show();
+        String message = "I own you";
+        shareText(message);
     }
 
     /**
@@ -146,6 +144,7 @@ public class MainActivity extends AppCompatActivity {
         ShareCompat.IntentBuilder.from(this)
                 .setType(mimeType)
                 .setChooserTitle(title)
-                .setText(message);
+                .setText(message)
+                .startChooser();
     }
 }
