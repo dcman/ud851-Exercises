@@ -119,8 +119,6 @@ public class VisualizerActivity extends AppCompatActivity {
 
         }
     }
-    // TODO (5) Add the menu to the menu bar
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
