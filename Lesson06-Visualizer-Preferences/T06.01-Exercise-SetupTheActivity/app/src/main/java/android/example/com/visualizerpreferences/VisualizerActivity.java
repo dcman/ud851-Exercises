@@ -25,6 +25,9 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.widget.Toast;
 
 public class VisualizerActivity extends AppCompatActivity {
@@ -114,11 +117,13 @@ public class VisualizerActivity extends AppCompatActivity {
 
         }
     }
-    // TODO (2) Add a new resource folder called menu and create visualizer_menu.xml
-    // TODO (3) In visualizer_menu.xml create a menu item with a single item. The id and title
-    // should be saved in strings.xml, it should never be shown as an action,
-    // orderInCategory should be 100
-
     // TODO (5) Add the menu to the menu bar
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.visualizer_menu, menu);
+        return true;
+    }
     // TODO (6) When the "Settings" menu item is pressed, open SettingsActivity
 }
